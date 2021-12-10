@@ -36,10 +36,10 @@ router.post('/login',async (req, res)=>{
         !user && res.status(404).json("user not found");
         const passwordValid = await bcrypt.compare(req.body.password,user.password);
         !passwordValid && res.status(400).json("wrong password");
-        res.send("correct pass")
+        return res.send("correct pass")
     }
     catch(err){
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 })
 module.exports = router
